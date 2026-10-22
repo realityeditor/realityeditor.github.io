@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="Layer_1" viewBox="0 0 92 46" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>.cls-1{fill:#fff;}</style>
+    <style>.cls-1{opacity:0.4;}.cls-2,.cls-3{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2px;}.cls-3{stroke-dasharray:5.71 5.71;}</style>
+  </defs>
+  <title>icon</title>
+  <rect x="0.516" y="0.516" width="90.968" height="44.968" style="stroke: rgb(255, 255, 255); fill: rgb(76, 76, 76);"/>
+  <g id="Routing_Layer-2" data-name="Routing Layer-2">
+    <path class="cls-1" d="M 65.6 23.6 C 65.611 33.49 57.59 41.511 47.7 41.5 L 47.7 36.6 C 57.746 36.576 63.999 25.686 58.955 16.998 C 53.912 8.31 41.355 8.34 36.352 17.052 C 35.461 18.603 34.899 20.322 34.7 22.1 L 40.6 22.3 L 32 30.4 L 24 21.9 L 29.9 22.1 C 31.329 8.395 47.058 1.376 58.212 9.465 C 62.754 12.759 65.488 17.991 65.6 23.6 Z M 54.8 24.1 L 54.8 26.4 L 44.9 26.4 L 44.9 16.4 L 47.1 16.4 L 47.1 24.1 L 54.8 24.1 Z" style="opacity: 1;"/>
+  </g>
+</svg>

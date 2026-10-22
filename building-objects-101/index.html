@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html class="html" lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Building Objects 101 &#8211; Reality Editor</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		
+		
+					
+				
+		
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='font-awesome-css' href='../wp-content/themes/oceanwp/assets/fonts/fontawesome/css/all.min.css' media='all' />
+<link rel='stylesheet' id='simple-line-icons-css' href='../wp-content/themes/oceanwp/assets/css/third/simple-line-icons.min.css' media='all' />
+<link rel='stylesheet' id='oceanwp-style-css' href='../wp-content/themes/oceanwp/assets/css/style.min.css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='../wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='../wp-content/plugins/elementor/assets/css/frontend.min.css' media='all' />
+<link rel='stylesheet' id='swiper-css' href='../wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css' media='all' />
+<link rel='stylesheet' id='elementor-post-1038-css' href='../wp-content/uploads/elementor/css/post-1038.css' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='../wp-content/uploads/elementor/css/global.css' media='all' />
+<link rel='stylesheet' id='elementor-post-827-css' href='../wp-content/uploads/elementor/css/post-827.css' media='all' />
+<link rel='stylesheet' id='enlighterjs-css' href='../wp-content/plugins/enlighter/cache/enlighterjs.min.css' media='all' />
+<link rel='stylesheet' id='oe-widgets-style-css' href='../wp-content/plugins/ocean-extra/assets/css/widgets.css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.4.2' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script src="../wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+<script src="../wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+
+
+<link rel="canonical" href="index.html" />
+
+
+
+
+<link rel="icon" href="../wp-content/uploads/2017/05/cropped-icon_web_t-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2017/05/cropped-icon_web_t-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2017/05/cropped-icon_web_t-180x180.png" />
+<meta name="msapplication-TileImage" content="../wp-content/uploads/2017/05/cropped-icon_web_t-270x270.png" />
+
+<style type="text/css">
+/* General CSS */a:hover,a.light:hover,.theme-heading .text::before,.theme-heading .text::after,#top-bar-content >a:hover,#top-bar-social li.oceanwp-email a:hover,#site-navigation-wrap .dropdown-menu >li >a:hover,#site-header.medium-header #medium-searchform button:hover,.oceanwp-mobile-menu-icon a:hover,.blog-entry.post .blog-entry-header .entry-title a:hover,.blog-entry.post .blog-entry-readmore a:hover,.blog-entry.thumbnail-entry .blog-entry-category a,ul.meta li a:hover,.dropcap,.single nav.post-navigation .nav-links .title,body .related-post-title a:hover,body #wp-calendar caption,body .contact-info-widget.default i,body .contact-info-widget.big-icons i,body .custom-links-widget .oceanwp-custom-links li a:hover,body .custom-links-widget .oceanwp-custom-links li a:hover:before,body .posts-thumbnails-widget li a:hover,body .social-widget li.oceanwp-email a:hover,.comment-author .comment-meta .comment-reply-link,#respond #cancel-comment-reply-link:hover,#footer-widgets .footer-box a:hover,#footer-bottom a:hover,#footer-bottom #footer-bottom-menu a:hover,.sidr a:hover,.sidr-class-dropdown-toggle:hover,.sidr-class-menu-item-has-children.active >a,.sidr-class-menu-item-has-children.active >a >.sidr-class-dropdown-toggle,input[type=checkbox]:checked:before{color:#00ffff}.single nav.post-navigation .nav-links .title .owp-icon use,.blog-entry.post .blog-entry-readmore a:hover .owp-icon use,body .contact-info-widget.default .owp-icon use,body .contact-info-widget.big-icons .owp-icon use{stroke:#00ffff}input[type="button"],input[type="reset"],input[type="submit"],button[type="submit"],.button,#site-navigation-wrap .dropdown-menu >li.btn >a >span,.thumbnail:hover i,.post-quote-content,.omw-modal .omw-close-modal,body .contact-info-widget.big-icons li:hover i,body div.wpforms-container-full .wpforms-form input[type=submit],body div.wpforms-container-full .wpforms-form button[type=submit],body div.wpforms-container-full .wpforms-form .wpforms-page-button{background-color:#00ffff}.thumbnail:hover .link-post-svg-icon{background-color:#00ffff}body .contact-info-widget.big-icons li:hover .owp-icon{background-color:#00ffff}.widget-title{border-color:#00ffff}blockquote{border-color:#00ffff}#searchform-dropdown{border-color:#00ffff}.dropdown-menu .sub-menu{border-color:#00ffff}.blog-entry.large-entry .blog-entry-readmore a:hover{border-color:#00ffff}.oceanwp-newsletter-form-wrap input[type="email"]:focus{border-color:#00ffff}.social-widget li.oceanwp-email a:hover{border-color:#00ffff}#respond #cancel-comment-reply-link:hover{border-color:#00ffff}body .contact-info-widget.big-icons li:hover i{border-color:#00ffff}#footer-widgets .oceanwp-newsletter-form-wrap input[type="email"]:focus{border-color:#00ffff}blockquote,.wp-block-quote{border-left-color:#00ffff}body .contact-info-widget.big-icons li:hover .owp-icon{border-color:#00ffff}input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,button[type="submit"]:hover,input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,button[type="submit"]:focus,.button:hover,.button:focus,#site-navigation-wrap .dropdown-menu >li.btn >a:hover >span,.post-quote-author,.omw-modal .omw-close-modal:hover,body div.wpforms-container-full .wpforms-form input[type=submit]:hover,body div.wpforms-container-full .wpforms-form button[type=submit]:hover,body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover{background-color:#00ffff}table th,table td,hr,.content-area,body.content-left-sidebar #content-wrap .content-area,.content-left-sidebar .content-area,#top-bar-wrap,#site-header,#site-header.top-header #search-toggle,.dropdown-menu ul li,.centered-minimal-page-header,.blog-entry.post,.blog-entry.grid-entry .blog-entry-inner,.blog-entry.thumbnail-entry .blog-entry-bottom,.single-post .entry-title,.single .entry-share-wrap .entry-share,.single .entry-share,.single .entry-share ul li a,.single nav.post-navigation,.single nav.post-navigation .nav-links .nav-previous,#author-bio,#author-bio .author-bio-avatar,#author-bio .author-bio-social li a,#related-posts,#comments,.comment-body,#respond #cancel-comment-reply-link,#blog-entries .type-page,.page-numbers a,.page-numbers span:not(.elementor-screen-only),.page-links span,body #wp-calendar caption,body #wp-calendar th,body #wp-calendar tbody,body .contact-info-widget.default i,body .contact-info-widget.big-icons i,body .posts-thumbnails-widget li,body .tagcloud a{border-color:#939393}body .contact-info-widget.big-icons .owp-icon,body .contact-info-widget.default .owp-icon{border-color:#939393}body,.has-parallax-footer:not(.separate-layout) #main{background-color:#222222}a{color:#00ffff}a .owp-icon use{stroke:#00ffff}a:hover{color:#ffff00}a:hover .owp-icon use{stroke:#ffff00}.container{width:950px}#main #content-wrap,.separate-layout #main #content-wrap{padding-top:1px;padding-bottom:0}#scroll-top{border-radius:7px}#scroll-top{background-color:rgba(0,255,255,0.1)}#scroll-top:hover{background-color:#ffff00}#scroll-top{color:#00ffff}#scroll-top .owp-icon use{stroke:#00ffff}#scroll-top:hover{color:#222222}#scroll-top:hover .owp-icon use{stroke:#00ffff}label,body div.wpforms-container-full .wpforms-form .wpforms-field-label{color:#ffffff}form input[type="text"],form input[type="password"],form input[type="email"],form input[type="url"],form input[type="date"],form input[type="month"],form input[type="time"],form input[type="datetime"],form input[type="datetime-local"],form input[type="week"],form input[type="number"],form input[type="search"],form input[type="tel"],form input[type="color"],form select,form textarea,.woocommerce .woocommerce-checkout .select2-container--default .select2-selection--single{border-radius:5px}body div.wpforms-container-full .wpforms-form input[type=date],body div.wpforms-container-full .wpforms-form input[type=datetime],body div.wpforms-container-full .wpforms-form input[type=datetime-local],body div.wpforms-container-full .wpforms-form input[type=email],body div.wpforms-container-full .wpforms-form input[type=month],body div.wpforms-container-full .wpforms-form input[type=number],body div.wpforms-container-full .wpforms-form input[type=password],body div.wpforms-container-full .wpforms-form input[type=range],body div.wpforms-container-full .wpforms-form input[type=search],body div.wpforms-container-full .wpforms-form input[type=tel],body div.wpforms-container-full .wpforms-form input[type=text],body div.wpforms-container-full .wpforms-form input[type=time],body div.wpforms-container-full .wpforms-form input[type=url],body div.wpforms-container-full .wpforms-form input[type=week],body div.wpforms-container-full .wpforms-form select,body div.wpforms-container-full .wpforms-form textarea{border-radius:5px}form input[type="text"],form input[type="password"],form input[type="email"],form input[type="url"],form input[type="date"],form input[type="month"],form input[type="time"],form input[type="datetime"],form input[type="datetime-local"],form input[type="week"],form input[type="number"],form input[type="search"],form input[type="tel"],form input[type="color"],form select,form textarea,.woocommerce .woocommerce-checkout .select2-container--default .select2-selection--single{background-color:#555555}body div.wpforms-container-full .wpforms-form input[type=date],body div.wpforms-container-full .wpforms-form input[type=datetime],body div.wpforms-container-full .wpforms-form input[type=datetime-local],body div.wpforms-container-full .wpforms-form input[type=email],body div.wpforms-container-full .wpforms-form input[type=month],body div.wpforms-container-full .wpforms-form input[type=number],body div.wpforms-container-full .wpforms-form input[type=password],body div.wpforms-container-full .wpforms-form input[type=range],body div.wpforms-container-full .wpforms-form input[type=search],body div.wpforms-container-full .wpforms-form input[type=tel],body div.wpforms-container-full .wpforms-form input[type=text],body div.wpforms-container-full .wpforms-form input[type=time],body div.wpforms-container-full .wpforms-form input[type=url],body div.wpforms-container-full .wpforms-form input[type=week],body div.wpforms-container-full .wpforms-form select,body div.wpforms-container-full .wpforms-form textarea{background-color:#555555}form input[type="text"],form input[type="password"],form input[type="email"],form input[type="url"],form input[type="date"],form input[type="month"],form input[type="time"],form input[type="datetime"],form input[type="datetime-local"],form input[type="week"],form input[type="number"],form input[type="search"],form input[type="tel"],form input[type="color"],form select,form textarea{color:#ffffff}body div.wpforms-container-full .wpforms-form input[type=date],body div.wpforms-container-full .wpforms-form input[type=datetime],body div.wpforms-container-full .wpforms-form input[type=datetime-local],body div.wpforms-container-full .wpforms-form input[type=email],body div.wpforms-container-full .wpforms-form input[type=month],body div.wpforms-container-full .wpforms-form input[type=number],body div.wpforms-container-full .wpforms-form input[type=password],body div.wpforms-container-full .wpforms-form input[type=range],body div.wpforms-container-full .wpforms-form input[type=search],body div.wpforms-container-full .wpforms-form input[type=tel],body div.wpforms-container-full .wpforms-form input[type=text],body div.wpforms-container-full .wpforms-form input[type=time],body div.wpforms-container-full .wpforms-form input[type=url],body div.wpforms-container-full .wpforms-form input[type=week],body div.wpforms-container-full .wpforms-form select,body div.wpforms-container-full .wpforms-form textarea{color:#ffffff}body .theme-button,body input[type="submit"],body button[type="submit"],body button,body .button,body div.wpforms-container-full .wpforms-form input[type=submit],body div.wpforms-container-full .wpforms-form button[type=submit],body div.wpforms-container-full .wpforms-form .wpforms-page-button{background-color:#13f2ea}body .theme-button:hover,body input[type="submit"]:hover,body button[type="submit"]:hover,body button:hover,body .button:hover,body div.wpforms-container-full .wpforms-form input[type=submit]:hover,body div.wpforms-container-full .wpforms-form input[type=submit]:active,body div.wpforms-container-full .wpforms-form button[type=submit]:hover,body div.wpforms-container-full .wpforms-form button[type=submit]:active,body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover,body div.wpforms-container-full .wpforms-form .wpforms-page-button:active{background-color:#0aaaa5}/* Header CSS */#site-logo #site-logo-inner,.oceanwp-social-menu .social-menu-inner,#site-header.full_screen-header .menu-bar-inner,.after-header-content .after-header-content-inner{height:60px}#site-navigation-wrap .dropdown-menu >li >a,.oceanwp-mobile-menu-icon a,.mobile-menu-close,.after-header-content-inner >a{line-height:60px}#site-header,.has-transparent-header .is-sticky #site-header,.has-vh-transparent .is-sticky #site-header.vertical-header,#searchform-header-replace{background-color:#777777}#site-header{border-color:#898989}#site-header.has-header-media .overlay-header-media{background-color:rgba(0,0,0,0.5)}#site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-width:251px}#site-logo a.site-logo-text{color:#ffffff}#site-navigation-wrap .dropdown-menu >li >a{padding:0 11px}#site-navigation-wrap .dropdown-menu >li >a,.oceanwp-mobile-menu-icon a,#searchform-header-replace-close{color:#ffffff}#site-navigation-wrap .dropdown-menu >li >a .owp-icon use,.oceanwp-mobile-menu-icon a .owp-icon use,#searchform-header-replace-close .owp-icon use{stroke:#ffffff}#site-navigation-wrap .dropdown-menu >li >a:hover,.oceanwp-mobile-menu-icon a:hover,#searchform-header-replace-close:hover{color:#777777}#site-navigation-wrap .dropdown-menu >li >a:hover .owp-icon use,.oceanwp-mobile-menu-icon a:hover .owp-icon use,#searchform-header-replace-close:hover .owp-icon use{stroke:#777777}#site-navigation-wrap .dropdown-menu >.current-menu-item >a,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a,#site-navigation-wrap .dropdown-menu >.current-menu-item >a:hover,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a:hover{color:#00ffff}#site-navigation-wrap .dropdown-menu >li >a{background-color:#777777}#site-navigation-wrap .dropdown-menu >li >a:hover,#site-navigation-wrap .dropdown-menu >li.sfHover >a{background-color:#00ffff}#site-navigation-wrap .dropdown-menu >.current-menu-item >a,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a,#site-navigation-wrap .dropdown-menu >.current-menu-item >a:hover,#site-navigation-wrap .dropdown-menu >.current-menu-ancestor >a:hover{background-color:#777777}.dropdown-menu .sub-menu{min-width:70px}.dropdown-menu .sub-menu,#searchform-dropdown,.current-shop-items-dropdown{background-color:#777777}.dropdown-menu ul li.menu-item,.navigation >ul >li >ul.megamenu.sub-menu >li,.navigation .megamenu li ul.sub-menu{border-color:#777777}.dropdown-menu ul li a.menu-link{color:#ffffff}.dropdown-menu ul li a.menu-link .owp-icon use{stroke:#ffffff}.dropdown-menu ul li a.menu-link:hover{color:#777777}.dropdown-menu ul li a.menu-link:hover .owp-icon use{stroke:#777777}.dropdown-menu ul li a.menu-link:hover{background-color:#00ffff}.dropdown-menu ul >.current-menu-item >a.menu-link{color:#777777}.dropdown-menu ul >.current-menu-item >a.menu-link{background-color:#00ffff}.navigation li.mega-cat .mega-cat-title{background-color:#ffffff}/* Footer Bottom CSS */#footer-bottom{background-color:#222222}#footer-bottom,#footer-bottom p{color:#555555}#footer-bottom a,#footer-bottom #footer-bottom-menu a{color:#324f51}#footer-bottom a:hover,#footer-bottom #footer-bottom-menu a:hover{color:#00ffff}/* Typography CSS */body{color:#fcfcfc}h1,h2,h3,h4,h5,h6,.theme-heading,.widget-title,.oceanwp-widget-recent-posts-title,.comment-reply-title,.entry-title,.sidebar-box .widget-title{font-family:Georgia,serif}#site-logo a.site-logo-text{font-family:Arial,Helvetica,sans-serif;font-weight:200;font-size:39px;line-height:1}.blog-entry.post .blog-entry-header .entry-title a{color:#ffffff}.single-post .entry-title{color:#ffffff}.sidebar-box .widget-title{color:#ffffff}
+</style></head>
+
+<body class="page-template-default page page-id-827 wp-custom-logo wp-embed-responsive oceanwp-theme dropdown-mobile no-header-border default-breakpoint content-full-width content-max-width page-header-disabled has-blog-grid elementor-default elementor-kit-1038 elementor-page elementor-page-827" itemscope="itemscope" itemtype="https://schema.org/WebPage">
+
+	
+	
+	<div id="outer-wrap" class="site clr">
+
+		<a class="skip-link screen-reader-text" href="index.html#main">Skip to content</a>
+
+		
+		<div id="wrap" class="clr">
+
+			
+			
+<header id="site-header" class="minimal-header clr" data-height="60" itemscope="itemscope" itemtype="https://schema.org/WPHeader" role="banner">
+
+	
+					
+			<div id="site-header-inner" class="clr container">
+
+				
+				
+
+<div id="site-logo" class="clr" itemscope itemtype="https://schema.org/Brand" >
+
+	
+	<div id="site-logo-inner" class="clr">
+
+		<a href="../index.html" class="custom-logo-link" rel="home"><img fetchpriority="high" width="1159" height="188" src="../wp-content/uploads/2017/05/logo24.png" class="custom-logo" alt="Reality Editor" decoding="async" srcset="../wp-content/uploads/2017/05/logo24.png 1159w, ../wp-content/uploads/2017/05/logo24-300x49.png 300w, ../wp-content/uploads/2017/05/logo24-768x125.png 768w, ../wp-content/uploads/2017/05/logo24-1024x166.png 1024w" sizes="(max-width: 1159px) 100vw, 1159px" /></a>
+	</div>
+
+	
+	
+</div>
+
+			<div id="site-navigation-wrap" class="no-top-border clr">
+			
+			
+			
+			<nav id="site-navigation" class="navigation main-navigation clr" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" role="navigation" >
+
+				<ul id="menu-realityeditor" class="main-menu dropdown-menu sf-menu"><li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a href="../beispiel-seite/index.html" class="menu-link"><span class="text-wrap">Software</span></a></li><li id="menu-item-930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-930"><a href="../getting-started/index.html" class="menu-link"><span class="text-wrap">Getting Started<i class="nav-arrow fa fa-angle-down" aria-hidden="true" role="img"></i></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="../getting-started/index.html" class="menu-link"><span class="text-wrap">User Interface 101</span></a></li>	<li id="menu-item-668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-668"><a href="../logic-blocks/index.html" class="menu-link"><span class="text-wrap">Logic Blocks</span></a></li>	<li id="menu-item-718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-718"><a href="../logic-node-examples/index.html" class="menu-link"><span class="text-wrap">Logic Node Examples</span></a></li></ul>
+</li><li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children dropdown menu-item-18"><a href="index.html#" class="menu-link"><span class="text-wrap">Learning (DIY)<i class="nav-arrow fa fa-angle-down" aria-hidden="true" role="img"></i></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-830" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-827 current_page_item menu-item-830"><a href="index.html" class="menu-link"><span class="text-wrap">Building Objects 101</span></a></li>	<li id="menu-item-21" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21"><a href="index.html#" class="menu-link"><span class="text-wrap">Tutorials</span></a></li>	<li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-22"><a href="index.html#" class="menu-link"><span class="text-wrap">Reference<i class="nav-arrow fa fa-angle-right" aria-hidden="true" role="img"></i></span></a>
+	<ul class="sub-menu">
+		<li id="menu-item-221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-221"><a href="../reference-javascript/index.html" class="menu-link"><span class="text-wrap">AR User Interface</span></a></li>		<li id="menu-item-232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-232"><a href="../hardwareinterface/index.html" class="menu-link"><span class="text-wrap">Hardware Interface</span></a></li>		<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79"><a href="../reference-arduino/index.html" class="menu-link"><span class="text-wrap">Arduino</span></a></li>	</ul>
+</li></ul>
+</li><li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="../forum/index.html" class="menu-link"><span class="text-wrap">Forum</span></a></li><li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="../blog/index.html" class="menu-link"><span class="text-wrap">Blog</span></a></li><li id="menu-item-7" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-7"><a href="../index.html" class="menu-link"><span class="text-wrap">Home</span></a></li><li id="menu-item-601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-601"><a href="../contact/index.html" class="menu-link"><span class="text-wrap">Contact</span></a></li></ul>
+			</nav>
+
+			
+			
+					</div>
+			
+		
+	
+				
+	
+	<div class="oceanwp-mobile-menu-icon clr mobile-right">
+
+		
+		
+		
+		<a href="../index.html#mobile-menu-toggle" class="mobile-menu"  aria-label="Mobile Menu">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+								<span class="oceanwp-text">Menu</span>
+				<span class="oceanwp-close-text">Close</span>
+						</a>
+
+		
+		
+		
+	</div>
+
+	
+
+			</div>
+
+			
+<div id="mobile-dropdown" class="clr" >
+
+	<nav class="clr" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
+
+		<ul id="menu-realityeditor-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a href="../beispiel-seite/index.html">Software</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-930"><a href="../getting-started/index.html">Getting Started</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="../getting-started/index.html">User Interface 101</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-668"><a href="../logic-blocks/index.html">Logic Blocks</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-718"><a href="../logic-node-examples/index.html">Logic Node Examples</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-18"><a href="index.html#">Learning (DIY)</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-827 current_page_item menu-item-830"><a href="index.html" aria-current="page">Building Objects 101</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21"><a href="index.html#">Tutorials</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22"><a href="index.html#">Reference</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-221"><a href="../reference-javascript/index.html">AR User Interface</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-232"><a href="../hardwareinterface/index.html">Hardware Interface</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79"><a href="../reference-arduino/index.html">Arduino</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="../forum/index.html">Forum</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="../blog/index.html">Blog</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-7"><a href="../index.html">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-601"><a href="../contact/index.html">Contact</a></li>
+</ul>
+	</nav>
+
+</div>
+
+			
+			
+		
+		
+</header>
+
+
+			
+			<main id="main" class="site-main clr"  role="main">
+
+				
+	
+	<div id="content-wrap" class="container clr">
+
+		
+		<div id="primary" class="content-area clr">
+
+			
+			<div id="content" class="site-content clr">
+
+				
+				
+<article class="single-page-article clr">
+
+	
+<div class="entry clr" itemprop="text">
+
+	
+			<div data-elementor-type="wp-page" data-elementor-id="827" class="elementor elementor-827 elementor-bc-flex-widget">
+									<section class="elementor-section elementor-top-section elementor-element elementor-element-i2mkrl4 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="i2mkrl4" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ej10m36" data-id="ej10m36" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-lkks81z elementor-widget elementor-widget-spacer" data-id="lkks81z" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-owhck4e elementor-widget elementor-widget-heading" data-id="owhck4e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-xl">Building Objects 101</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-9y3j7k5 elementor-widget elementor-widget-heading" data-id="9y3j7k5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">A developer guide for building objects compatible with the Reality Editor. (Work In Progress)</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-rbqsp0i elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="rbqsp0i" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-uv3ailk" data-id="uv3ailk" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-rp6vici elementor-widget elementor-widget-spacer" data-id="rp6vici" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-dsxlt4p elementor-widget elementor-widget-menu-anchor" data-id="dsxlt4p" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+					<div id="arduinoYunExample" class="elementor-menu-anchor"></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-01g6lhd elementor-widget elementor-widget-heading" data-id="01g6lhd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default">Arduino Yun Example</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2wnbj5x elementor-widget elementor-widget-heading" data-id="2wnbj5x" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-large">Sensor, LED, AR Slider</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-bgxohf1 elementor-widget elementor-widget-text-editor" data-id="bgxohf1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>For this example, you will create a hybrid object by assigning a marker image to your object and uploading a sketch to your Arduino. For this example, you will create a new interface. You can find more information on how to assign a new interface to your hybrid object <a class="nonblock" href="http://www.openhybrid.org/adding-web-content.html" data-href="page:U1678">here</a>. Once your object is created, you can virtually change the brightness of the LED and link the Arduino’s sensor to the led and see the physical object react. Once the link is created, the LED on your Arduino will light up when the sensor is touched. When the virtual IO link between your sensor and LED is cut, the led will no longer respond the the sensor.</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-nvcz12h elementor-widget elementor-widget-video" data-id="nvcz12h" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/vimeo.com\/132384529&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-open-inline">
+			<div class="elementor-video"></div>		</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-xafd4sx elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="xafd4sx" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-8vhioho" data-id="8vhioho" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-4n1cy08 elementor-widget elementor-widget-heading" data-id="4n1cy08" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Needed Components</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ju7zrd4 elementor-widget elementor-widget-text-editor" data-id="ju7zrd4" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<ul id="u3758-50" class="list0 nls-None"><li id="u3758-27" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/12053">Arduino Yun</a> <a class="nonblock" href="../beispiel-seite/index.html" data-href="page:U93">with the installed <br />Open Hybrid platform</a></li><li id="u3758-30" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/9375">Force Sensor Resistor</a></li><li id="u3758-33" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/11121">LED</a></li><li id="u3758-36" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/10969">10K Ohm Resistor</a></li><li id="u3758-39" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/10969">220 Ohm Resistor</a></li><li id="u3758-42" class="text"><a class="nonblock" href="https://www.sparkfun.com/products/12043">Breadboard</a></li><li id="u3758-44" class="text">A printed image of your target</li><li id="u3758-46" class="text">Personal Wi-Fi network</li><li id="u3758-49" class="text"><a class="nonblock" href="https://github.com/openhybrid/HybridObject/archive/master.zip">Hello World Example Files</a></li></ul>						</div>
+				</div>
+				<div class="elementor-element elementor-element-zhlwoi0 elementor-widget elementor-widget-heading" data-id="zhlwoi0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Circuit</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-x8u30b9 elementor-widget elementor-widget-text-editor" data-id="x8u30b9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Connect the long leg of the LED to the 220 Ohm resistor. Plug the short leg from the LED in to GND and the other side of the resistor in to pin 13.</p><p class="text"> Connect one side of the force sensor to 5V and the other side to the 10K Ohm resistor and the A0 input. Connect the other side of the 10K Ohm resistor to GND.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3diwn9z" data-id="3diwn9z" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-8upkgan elementor-widget elementor-widget-image" data-id="8upkgan" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="424" height="699" src="../wp-content/uploads/2017/05/board.jpg" class="attachment-large size-large wp-image-844" alt="" srcset="../wp-content/uploads/2017/05/board.jpg 424w, ../wp-content/uploads/2017/05/board-182x300.jpg 182w" sizes="(max-width: 424px) 100vw, 424px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-vjgqci9 elementor-widget elementor-widget-heading" data-id="vjgqci9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Hybrid Object</h2>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-vpojxud elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="vpojxud" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7xv6xu6" data-id="7xv6xu6" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-avnijio elementor-widget elementor-widget-heading" data-id="avnijio" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Target</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-p31k3x9 elementor-widget elementor-widget-text-editor" data-id="p31k3x9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Follow <a class="nonblock" href="index.html#addingATarget" data-href="page:U1645">these guidelines</a> for creating your object and adding a target image. This marker or target allows the computer vision software to correctly identify your object. Each object that you create needs to have a unique target attached to it. An appropriate target image is one with many edges and without repeating patterns. You can use the image on the right as your target image or just any image you like or photo of surfaces that you like.</p><p class="text"> You can also find more prepared targets in the <a class="nonblock" href="https://github.com/openhybrid/HybridObject/archive/master.zip">Library File</a>. You can also use <a class="nonblock" href="http://www.hrqr.org/">hrqr.org</a> to generate targets easily.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-y0k8gr0" data-id="y0k8gr0" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-ljr5jjo elementor-widget elementor-widget-image" data-id="ljr5jjo" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="426" height="426" src="../wp-content/uploads/2017/05/pasted-image-600x600.jpg" class="attachment-large size-large wp-image-846" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-600x600.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-600x600-150x150.jpg 150w, ../wp-content/uploads/2017/05/pasted-image-600x600-300x300.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-esjbn9m elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="esjbn9m" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-iwzq7on" data-id="iwzq7on" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-9r1wpm3 elementor-widget elementor-widget-heading" data-id="9r1wpm3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Arduino</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-dcj4kns elementor-widget elementor-widget-text-editor" data-id="dcj4kns" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Once your target is uploaded, you can now point your device at the target image and see that there is already a starting page.  However, in order to reprogram and interact with your hybrid object, you must first link you Arduino with your interface by generating IO-Points and</p><p class="text">send data from the Arduino to these IO-Points. The sketch on the right side is doing this job.</p><p class="text"> You can find a more detailed explanation for this sketch <a class="nonblock" href="index.html#addingIOPoints" data-href="page:U1691">here</a>.</p><p class="text"> A general detailed explanation for all functions can be found in the <a class="nonblock" href="../reference-javascript/index.html" data-href="page:U196">reference</a>.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-uzm5iwv" data-id="uzm5iwv" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-qpzj0n7 elementor-widget elementor-widget-text-editor" data-id="qpzj0n7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="EnlighterJSRAW" data-enlighter-language="c">
+
+/*
+created 2015
+by Valentin Heun
+*/
+ 
+#include <HybridObject.h>
+HybridObject obj;
+ 
+void setup() {
+    obj.developer(); // allow developer tools
+    obj.add("slider", "led"); // add a new I/O Point
+    obj.add("slider", "sensor");
+}
+ 
+void loop() {
+ 
+    // Read from sensor
+    float reading = obj.map(analogRead(A0), 0, 940);
+ 
+    // Write to Object
+    obj.write("slider", "sensor", reading);
+ 
+    // Read from Object
+    analogWrite(13, obj.read("slider", "led") * 255);
+ 
+    delay(30);
+}
+</pre>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-0n9vduw elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="0n9vduw" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-yaeyc7j" data-id="yaeyc7j" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-jzazjpc elementor-widget elementor-widget-heading" data-id="jzazjpc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Web</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1ka1eh2 elementor-widget elementor-widget-text-editor" data-id="1ka1eh2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Now it is time to add an interface. You can find all the information you need to add an interface to your hybrid object <a class="nonblock" href="http://addAnInterface" data-href="page:U1678" data-wplink-url-error="true">here</a>. Be sure to title your file index.html. A detailed explanation for all JavaScript functions can be found in the <a class="nonblock" href="../reference-javascript/index.html" data-href="page:U196">reference</a>.</p><p class="text">Additionally, you will have to drag and drop the object.js file along with this objectIO.js file to the “Add Interfaces” page. you will find both files in the <a class="nonblock" href="https://github.com/openhybrid/HybridObject/archive/master.zip">sensorAndSlider example</a> folder.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-q13ryep" data-id="q13ryep" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-0xz240u elementor-widget elementor-widget-text-editor" data-id="0xz240u" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="EnlighterJSRAW" data-enlighter-language="c">
+
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+    <script src="object.js"></script>
+    <script src="objectIO.js"></script>
+    <script src="../socket.io/socket.io.js"></script>
+    <style>
+     input[type=range] {
+            background-color: transparent;
+            -webkit-appearance: none;
+ 
+     }
+ 
+     input[type=range]::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            height: 68px;
+            background-color: rgba(255, 255, 255, 0);
+            -webkit-backdrop-filter: blur(4px);
+            border: solid 4px #00edff;
+            border-radius: 8px;
+            padding: 5px;
+     }
+ 
+     input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 50px;
+            width: 50px;
+            border-radius: 2px;
+            background: #00edff;
+     }
+ 
+     .range-slider input[type="range"]:after {
+            height: 2px;
+            background: #fff;
+            content: ' ';
+            width: 5px;
+            top: 50%;
+            margin-top: -1px;
+            left: -5px;
+            z-index: 1;
+            position: absolute;
+     }
+ 
+     input[type=range]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input id="slider" type="range" value="0" min="0"
+    max="255" style="width:250px">
+<script>
+     var obj = new HybridObject();
+    var slider = document.getElementById('slider');
+    var touchState = false;
+ 
+    document.addEventListener("touchstart",function(e) {
+        touchState = true;
+    }, false);
+    document.addEventListener("touchend", function (e) {
+        touchState = false;
+    }, false);
+ 
+ 
+    obj.addReadListener("led", function(e){
+        if (!touchState)
+            slider.value = e*255;
+ 
+    });
+ 
+    slider.addEventListener("input", function () {
+        obj.write("led",  slider.value / 255);
+    }, false);
+</script>
+</body>
+</html -->
+
+</pre>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-41ib8mz elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="41ib8mz" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-lhjorfz" data-id="lhjorfz" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-qby6vb5 elementor-widget elementor-widget-spacer" data-id="qby6vb5" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-v8yuwrk elementor-widget elementor-widget-menu-anchor" data-id="v8yuwrk" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+					<div id="addingATarget" class="elementor-menu-anchor"></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-l2xlrta elementor-widget elementor-widget-heading" data-id="l2xlrta" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Adding a Target</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-bzdccd6 elementor-widget elementor-widget-video" data-id="bzdccd6" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/vimeo.com\/131582851&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-open-inline">
+			<div class="elementor-video"></div>		</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-u043v84 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="u043v84" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-ih19lsx" data-id="ih19lsx" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-g6vnfz1 elementor-widget elementor-widget-text-editor" data-id="g6vnfz1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">To create a Hybrid Object through the developer interface, access the following address with your web browser:</p><pre class="EnlighterJSRAW" data-enlighter-language="js">http://[arduinoName].local:8080/
+</pre><p class="text">Your arduino name is the name you defined in the setup of your arduino board. If you have not made any changes to the name, this name is simply “arduino”.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-nff9now" data-id="nff9now" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-n6iqmyv elementor-widget elementor-widget-image" data-id="n6iqmyv" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-712x401.jpg" class="attachment-large size-large wp-image-848" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-712x401.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-712x401-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-3mactnq elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="3mactnq" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-98xf9t2" data-id="98xf9t2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-wcfvlkf elementor-widget elementor-widget-text-editor" data-id="wcfvlkf" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">To create your first object, simply enter your desired object name into the empty field and click “Create New Hybrid Object.”</p><p class="text">Once you have created your object, it should appear in the list of objects in your browser. This tutorial will be working with an object named “test.”</p><p class="text">The color of the “Add Target” and “Add Interface” buttons tell us that we have begun to create a hybrid object, but we have not completed its creation. In a completed object, both buttons appear green. Once we have added an interface and a target to our object, the object will be live and the buttons will be green.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2d7w3tp" data-id="2d7w3tp" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-8pcz0kp elementor-widget elementor-widget-image" data-id="8pcz0kp" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-692x389.jpg" class="attachment-large size-large wp-image-847" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-692x389.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-692x389-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-maqbni3 elementor-widget elementor-widget-heading" data-id="maqbni3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Add a Target to an Object</h4>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-7m5xxzz elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7m5xxzz" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-qjl94y4" data-id="qjl94y4" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-g05m95g elementor-widget elementor-widget-text-editor" data-id="g05m95g" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">A target is an image that allows the computer vision software to correctly identify your object. Each object that you create needs to have a unique target attached to it. An appropriate target image is one with many edges and without repeating patterns. Your image file  MUST be a JPG file. Other image formats ARE NOT compatible. To add a Target to your object, hit the “Add Target” button in the row associated with the object you wish to alter. You should find the following page.</p><p class="text">First, drag and drop your image JPEG target onto the striped area of the page. Second, proceed with the Vufoira Target Manager.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-kqplx48" data-id="kqplx48" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-w2ousre elementor-widget elementor-widget-image" data-id="w2ousre" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="425" height="239" src="../wp-content/uploads/2017/05/pasted-image-697x392.jpg" class="attachment-large size-large wp-image-851" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-697x392.jpg 425w, ../wp-content/uploads/2017/05/pasted-image-697x392-300x169.jpg 300w" sizes="(max-width: 425px) 100vw, 425px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-0vcgwla elementor-widget elementor-widget-heading" data-id="0vcgwla" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Vuforia Target Manager</h4>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-9duzku8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9duzku8" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-iq7u37v" data-id="iq7u37v" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-utalmqp elementor-widget elementor-widget-text-editor" data-id="utalmqp" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>If you have already created a Vuforia Target Manager Account, log in now. Otherwise, follow the included instructions to create a new account.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-wkk19h3" data-id="wkk19h3" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-wxcmwcc elementor-widget elementor-widget-image" data-id="wxcmwcc" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-908x510.jpg" class="attachment-large size-large wp-image-850" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-908x510.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-908x510-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-zb34jvd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="zb34jvd" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-wytg542" data-id="wytg542" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-0xi4vrg elementor-widget elementor-widget-text-editor" data-id="0xi4vrg" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Once you have logged into the embedded Vuforia page, click the “Target Manager” button in the main menu. You will now be able to create your own database by clicking the button “add Database”.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-8alb60d" data-id="8alb60d" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-6kagac9 elementor-widget elementor-widget-image" data-id="6kagac9" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-585x329.jpg" class="attachment-large size-large wp-image-857" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-585x329.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-585x329-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-l10cb02 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="l10cb02" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2t1o90m" data-id="2t1o90m" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-fefbsjm elementor-widget elementor-widget-text-editor" data-id="fefbsjm" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">You will be asked for a Name and Type. Choose a name and select “Device” as Type.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-t6ajeu2" data-id="t6ajeu2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-oa490zt elementor-widget elementor-widget-image" data-id="oa490zt" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-666x375.jpg" class="attachment-large size-large wp-image-856" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-666x375.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-666x375-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-tp2wlbk elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="tp2wlbk" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-yhm4wra" data-id="yhm4wra" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-8s9qv2a elementor-widget elementor-widget-text-editor" data-id="8s9qv2a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">After you create and name your new database, a new link to your database should appear on the page. Click on your new database. The database created for the purposes of this tutorial is named “test”</p><p class="text">Now you can add your target image to your database. Click the “Add Target” button.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-r404hcl" data-id="r404hcl" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-p9l7fjl elementor-widget elementor-widget-image" data-id="p9l7fjl" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-596x335.jpg" class="attachment-large size-large wp-image-855" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-596x335.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-596x335-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-yck1ijs elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="yck1ijs" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0oiicyf" data-id="0oiicyf" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1uwibcu elementor-widget elementor-widget-text-editor" data-id="1uwibcu" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">In the Add Target menu, the name of your target should be copied from the fourth bullet point at the top of the main page, which has created a unique target name for you.</p><p class="text">Select “Single Image” from the options for “Target Type.” Enter the value 300 for the width of the new target.</p><p id="u3451-92" class="text"><strong>You can choose a target image from the target image folder provided in the <a class="nonblock" href="https://github.com/openhybrid/HybridObject/archive/master.zip">Examples</a>, which you downloaded earlier. Any of these images will work as a target for your new object.</strong></p><p class="text">Complete the creation of your new target by clicking the “Add” button, then return to the main database page that you created earlier.</p><p class="text">Now you can add your target image to your database. Click the “Add Target” button.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-egcbk4z" data-id="egcbk4z" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2v59qy8 elementor-widget elementor-widget-image" data-id="2v59qy8" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-833x468.jpg" class="attachment-large size-large wp-image-854" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-833x468.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-833x468-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-gq6i6z3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="gq6i6z3" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-iscpqty" data-id="iscpqty" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-zc29eiv elementor-widget elementor-widget-text-editor" data-id="zc29eiv" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">On the new database page, you can now select your newly created target. Do so, and then click the “Download Selected Targets” button. Select SDK to download your new target as a .zip file.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1zjazm9" data-id="1zjazm9" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-5xdlyio elementor-widget elementor-widget-image" data-id="5xdlyio" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-586x329.jpg" class="attachment-large size-large wp-image-853" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-586x329.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-586x329-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-y3samd8 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="y3samd8" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-pcj3u30" data-id="pcj3u30" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-fpll4ui elementor-widget elementor-widget-text-editor" data-id="fpll4ui" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Once you have downloaded the .zip file of your database, drag and drop it anywhere in the striped area at the top of the page. This will finish the process of adding a target to your object.</p><p class="text"> Click the “Back” link at the top of your screen to return to the main page.  After creating an interface and uploading the vuforia target and the jpg target image for your new object, the &#8220;target&#8221; and &#8220;interface&#8221; buttons on the main page should change to green.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-w7i6ty0" data-id="w7i6ty0" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-lyjsvzz elementor-widget elementor-widget-image" data-id="lyjsvzz" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-638x359.jpg" class="attachment-large size-large wp-image-852" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-638x359.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-638x359-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-1gr0yx2 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1gr0yx2" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-jeln482" data-id="jeln482" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-6kdsnrz elementor-widget elementor-widget-spacer" data-id="6kdsnrz" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ufqctcw elementor-widget elementor-widget-menu-anchor" data-id="ufqctcw" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+					<div id="addAnInterface" class="elementor-menu-anchor"></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-4m8qy8s elementor-widget elementor-widget-heading" data-id="4m8qy8s" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Add an Interface to the Object</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-dbqu703 elementor-widget elementor-widget-video" data-id="dbqu703" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/vimeo.com\/131708943&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-open-inline">
+			<div class="elementor-video"></div>		</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-in53z82 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="in53z82" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-kaezfy4" data-id="kaezfy4" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-uimmywn elementor-widget elementor-widget-text-editor" data-id="uimmywn" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">The interface of a Hybrid Object is what a user will see augmented onto a Hybrid Object. To add an interface to your Hybrid Object, click the “Add Interface” button in the row of your newly created object.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-bag0ktt" data-id="bag0ktt" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-r9rilib elementor-widget elementor-widget-image" data-id="r9rilib" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-698x393.jpg" class="attachment-large size-large wp-image-840" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-698x393.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-698x393-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-i74g1kv elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="i74g1kv" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-4mhcq0g" data-id="4mhcq0g" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-uyyjb6h elementor-widget elementor-widget-text-editor" data-id="uyyjb6h" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">The Object allready has a “hello world” example stored. The index.html embeds the bird.png image into the webpage. The name index.html indicates that this file is the starting point. The object.js file always needs to be included in your project. It provides functions that allow the Reality Editor to communicate with the Hybrid Object.</p><p class="text">If you want to add a new interface to the page, simply drag and drop your new pages into this page. They will overwrite the previous files.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-hoih9l4" data-id="hoih9l4" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-x1jkn8f elementor-widget elementor-widget-image" data-id="x1jkn8f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-865x486.jpg" class="attachment-large size-large wp-image-839" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-865x486.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-865x486-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-eyswcp0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="eyswcp0" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-vyxawbs" data-id="vyxawbs" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-juta172 elementor-widget elementor-widget-text-editor" data-id="juta172" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Let’s take a closer look at the index.html file.<span id="u3682" class="actAsDiv normal_text"><span id="u3681-27" class="actAsDiv clearfix" data-muse-uid="U3681" data-muse-type="txt_frame"></span></span></p><p class="text">The script tag including object.js is necessary for your HTML page to interact with the Hybrid Object. For this reason, it should not (and cannot) be deleted in order to function. Otherwise, anything in this file can be altered. This particular file tells us to expect the bird.png image to appear when we use the interface. Always make sure that you add object.js to your interfaces.</p><p class="text">Once you are satisfied with your interface files, you can move on to interacting with your Hybrid Object. Remember you can always come back and alter your object’s interface later! Click the “Back” link to return to the main page.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7zhk7ub" data-id="7zhk7ub" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-ba0sws9 elementor-widget elementor-widget-text-editor" data-id="ba0sws9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="EnlighterJSRAW" data-enlighter-language="c">
+<!--doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>demo</title>
+        <script src="object.js"></script>
+    </head>
+    <body>
+        <img loading="lazy" decoding="async" src="bird.png" width="300"
+        height="300" alt=""/>
+    </body>
+</html -->
+</pre>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-k1gm6i4 elementor-widget elementor-widget-heading" data-id="k1gm6i4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Using Your Device with a Target</h4>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-bx5ykih elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="bx5ykih" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5lzxhqk" data-id="5lzxhqk" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-m4xyeh2 elementor-widget elementor-widget-text-editor" data-id="m4xyeh2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">When you are ready to interact with your Hybrid Object, open the Reality Editor App on your device.</p><p class="text">Next, point your device at the target image you have chosen for your object.</p><p class="text">When you point your device at your chosen target image, you will see the content of you index.html file (the HTML file in the object’s Interface) appear.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-lnipbrl" data-id="lnipbrl" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-vuj1tdw elementor-widget elementor-widget-image" data-id="vuj1tdw" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-878x494.jpg" class="attachment-large size-large wp-image-842" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-878x494.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-878x494-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-4qun1dy elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4qun1dy" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-xf02x8e" data-id="xf02x8e" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-drb85u6 elementor-widget elementor-widget-text-editor" data-id="drb85u6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">To scale all interfaces, you can push the Developer button (the third icon on an iPad or the last icon on an iPhone) to get in to a menu where you can switch on the developer mode.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7di2xdx" data-id="7di2xdx" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-sjzalku elementor-widget elementor-widget-image" data-id="sjzalku" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-1136x640.jpg" class="attachment-large size-large wp-image-841" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-1136x640.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-1136x640-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-gwidgmd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="gwidgmd" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-r46e58a" data-id="r46e58a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-d4hwhc2 elementor-widget elementor-widget-text-editor" data-id="d4hwhc2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Once you have switched the mode, you will be able to move interfaces around by simply dragging them with a finger. For scaling the interface, use one finger to select the interface and the second finger to change the scale.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-kpjx52g" data-id="kpjx52g" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1i6lg4x elementor-widget elementor-widget-video" data-id="1i6lg4x" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/vimeo.com\/131583576&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-open-inline">
+			<div class="elementor-video"></div>		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-gjkzz6t elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="gjkzz6t" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-hddzgx6" data-id="hddzgx6" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-02xe7l7 elementor-widget elementor-widget-spacer" data-id="02xe7l7" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-sftni56 elementor-widget elementor-widget-menu-anchor" data-id="sftni56" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+					<div id="addingIOPoints" class="elementor-menu-anchor"></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-wqgvo2l elementor-widget elementor-widget-heading" data-id="wqgvo2l" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Adding IO-Points with the Arduino Yun</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1xivd3j elementor-widget elementor-widget-video" data-id="1xivd3j" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/vimeo.com\/131582762&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-open-inline">
+			<div class="elementor-video"></div>		</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-jw0evrj elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="jw0evrj" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-xk4dc4y" data-id="xk4dc4y" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-ca8q6sk elementor-widget elementor-widget-text-editor" data-id="ca8q6sk" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p id="u3704-17" class="text">Once you have <a class="nonblock" href="index.html#addingATarget" data-href="page:U1645">created your object and added a marker</a> as well learned about how to <a href="index.html#addAnInterface">add web content</a>, the next step towards creating a Hybrid Object is to link the Arduino that you have set up as your object to the Reality Editor using so called IO-Points.</p><p class="text">For this example, we are using a file called test.ino.  When uploaded, this sketch will cause the led to blink when connected to the generator.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-xpsp4e0" data-id="xpsp4e0" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-tyoe0fq elementor-widget elementor-widget-image" data-id="tyoe0fq" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-609x343.jpg" class="attachment-large size-large wp-image-860" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-609x343.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-609x343-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-jhf12b9 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="jhf12b9" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2cmyjvh" data-id="2cmyjvh" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-fgsb7j5 elementor-widget elementor-widget-text-editor" data-id="fgsb7j5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Here is the code:</p>
+
+<pre class="EnlighterJSRAW" data-enlighter-language="c">
+/*
+Read from and Write to a Hybrid object
+ 
+created 2015
+by Valentin Heun
+*/
+ 
+#include 
+HybridObject obj;
+ 
+int counter =0;
+ 
+void setup() {
+ obj.developer();
+ obj.add("test", "led");
+ obj.add("test", "generator");
+ obj.add("test","light sensor");
+}
+ 
+void loop() {
+ 
+ analogWrite(13, obj.read("test", "led")*255);
+ 
+ counter+=30;
+ if(counter&gt;1023)
+ {
+ counter = 0;
+ }
+ 
+ obj.write("test", "generator",(float)obj.map(counter,0,1023));
+ obj.write("test", "light sensor",(float)obj.map(counter,0,1023));
+ 
+ delay(30);
+}
+
+</pre>
+<p class="text"> Here’s what the code means:</p>
+
+<ul>
+ 	<li class="text">HybridObject obj : This is your hybrid object.</li>
+ 	<li class="text">obj.developer() : This line allows you to use the developer functions with your hybrid object.</li>
+ 	<li class="text">obj.add(“test”,”led”) : This line creates a new IO-Point in the hybrid object named &#8220;test&#8221; and associates the name &#8220;led&#8221; to it.</li>
+ 	<li class="text">obj.read(“test”,”led”) : This line allows your object to read from the IO-Point. You never have to indicate if it is an input or an output, that work will be done for you.</li>
+ 	<li class="text">analogWrite(13, obj.read(“test”,”led”) *255) : analogWrite allows you to write to a pin on your Arduino. In this case, we are telling the Arduino’s 13th pin to be written to by what we read from the &#8220;led&#8221; IO-Point.</li>
+</ul>
+<p class="text">As such, there are 4 simple functions to interact with your Hybrid Object:</p>
+
+<ul>
+ 	<li class="text">.developer()</li>
+ 	<li class="text">.add([ObjectName], [I/OName])</li>
+ 	<li class="text">.read([ObjectName], [I/OName])</li>
+ 	<li class="text">.write([ObjectName], [I/OName], value)</li>
+</ul>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-eo3oa8t elementor-widget elementor-widget-heading" data-id="eo3oa8t" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Linking IO-Points via the interface</h4>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-r584rsy elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="r584rsy" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-tjo0fts" data-id="tjo0fts" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-wkkm7x0 elementor-widget elementor-widget-text-editor" data-id="wkkm7x0" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">Make sure that your computer, iOS-Device and Arduino Yun used in this tutorial are in the same private local Network. Cooperate Networks are not supported.</p><p class="text">Now we can return to the Reality Editor app.</p><p class="text">The app has two different modes to interact with what it is visually processing. So far, we’ve been operating under the first selection:</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-z90fbah" data-id="z90fbah" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-s74836w elementor-widget elementor-widget-image" data-id="s74836w" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-906x510.jpg" class="attachment-large size-large wp-image-863" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-906x510.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-906x510-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-zwf963l elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="zwf963l" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-ke1siue" data-id="ke1siue" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-gn8bfvb elementor-widget elementor-widget-text-editor" data-id="gn8bfvb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">But now that we have added IO interactions to our object, we can hit the second button in the right-hand corner. This view will allow us to link IO points that we have attached to our device.</p><p class="text">Now we can connect our “generator” IO to the “led” IO that we created in the Arduino code. When we do this, we will see that the led on our Arduino will begin to reflect the code. To create this connection, simply drag from the “generator” IO to the “led”. After doing this, you should see a link like in the screenshot below.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-ol49s6v" data-id="ol49s6v" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-vcz5sx8 elementor-widget elementor-widget-image" data-id="vcz5sx8" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="240" src="../wp-content/uploads/2017/05/pasted-image-885x498.jpg" class="attachment-large size-large wp-image-862" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-885x498.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-885x498-300x169.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-0xx3ae5 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="0xx3ae5" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-donpkr4" data-id="donpkr4" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-bovrboc elementor-widget elementor-widget-text-editor" data-id="bovrboc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p class="text">This link is telling you that the “led” object is taking the “generator” object as input.</p><p class="text">To break a link, simply drag your finger over the link itself.</p><p class="text">You can also create links between entirely separate Hybrid Objects. For instance, we could connect the “sensor” IO from one object to the “led” IO on another.</p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-ktwzfgv" data-id="ktwzfgv" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-xj9i7h0 elementor-widget elementor-widget-image" data-id="xj9i7h0" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img loading="lazy" decoding="async" width="426" height="239" src="../wp-content/uploads/2017/05/pasted-image-960x540.jpg" class="attachment-large size-large wp-image-861" alt="" srcset="../wp-content/uploads/2017/05/pasted-image-960x540.jpg 426w, ../wp-content/uploads/2017/05/pasted-image-960x540-300x168.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		
+	
+</div>
+
+</article>
+
+				
+			</div>
+
+			
+		</div>
+
+		
+	</div>
+
+	
+
+	</main>
+
+	
+	
+	
+		
+<footer id="footer" class="site-footer" itemscope="itemscope" itemtype="https://schema.org/WPFooter" role="contentinfo">
+
+	
+	<div id="footer-inner" class="clr">
+
+		
+
+<div id="footer-bottom" class="clr no-footer-nav">
+
+	
+	<div id="footer-bottom-inner" class="container clr">
+
+		
+		
+			<div id="copyright" class="clr" role="contentinfo">
+				<p><a href="http://fluid.media.mit.edu"><img src="../wp-content/uploads/2017/05/flml.png" width="200px"></a></p>
+
+
+You are looking at research results from the MIT Media Lab Fluid Interfaces Group. Feel free to share.<br>
+All logos, trademarks and images are property of their respective owners.<br>
+Apple, the Apple logo, iPhone, iPad are trademarks of Apple Inc..  
+<br>MINDSTORMS, the MINDSTORMS EV3 logo, Lego, Wedo and the Lego logo are trademarks of the LEGO Group.<br>Hue is a trademark of Philips Lighting B.V.. <br>Reality Editor is not endorsed by Apple, Inc., Lego or Philips.			</div>
+
+			
+	</div>
+
+	
+</div>
+
+
+	</div>
+
+	
+</footer>
+
+	
+	
+</div>
+
+
+</div>
+
+
+
+<a aria-label="Scroll to the top of the page" href="index.html#" id="scroll-top" class="scroll-top-right"><i class=" fa fa-angle-up" aria-hidden="true" role="img"></i></a>
+
+
+
+
+<script src="../wp-includes/js/imagesloaded.min.js" id="imagesloaded-js"></script>
+<script id="oceanwp-main-js-extra">
+var oceanwpLocalize = {"nonce":"","isRTL":"","menuSearchStyle":"disabled","mobileMenuSearchStyle":"disabled","sidrSource":null,"sidrDisplace":"1","sidrSide":"left","sidrDropdownTarget":"link","verticalHeaderTarget":"link","customScrollOffset":"0","customSelects":".woocommerce-ordering .orderby, #dropdown_product_cat, .widget_categories select, .widget_archive select, .single-product .variations_form .variations select","ajax_url":"","oe_mc_wpnonce":""};
+</script>
+<script src="../wp-content/themes/oceanwp/assets/js/theme.min.js" id="oceanwp-main-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/drop-down-mobile-menu.min.js" id="oceanwp-drop-down-mobile-menu-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/vendors/magnific-popup.min.js" id="ow-magnific-popup-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/ow-lightbox.min.js" id="oceanwp-lightbox-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/vendors/flickity.pkgd.min.js" id="ow-flickity-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/ow-slider.min.js" id="oceanwp-slider-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/scroll-effect.min.js" id="oceanwp-scroll-effect-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/scroll-top.min.js" id="oceanwp-scroll-top-js"></script>
+<script src="../wp-content/themes/oceanwp/assets/js/select.min.js" id="oceanwp-select-js"></script>
+<script src="../wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":2,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"atomic","language":"js","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script src="../wp-content/plugins/elementor/assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
+<script src="../wp-content/plugins/elementor/assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
+<script src="../wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js" id="elementor-waypoints-js"></script>
+<script src="../wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.18.3","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"additional_custom_breakpoints":true,"block_editor_assets_optimize":true,"landing-pages":true,"e_image_loading_optimization":true,"e_global_styleguide":true},"urls":{"assets":"..\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper-container","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":827,"title":"Building%20Objects%20101%20%E2%80%93%20Reality%20Editor","excerpt":"","featuredImage":false}};
+</script>
+<script src="../wp-content/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js"></script>
+</body>
+</html>
+
